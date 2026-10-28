@@ -25,11 +25,13 @@ Use Node.js 24.22.1 and pnpm 12.15.0.
 ```bash
 pnpm install
 pnpm db:up
+pnpm db:migrate:deploy
 pnpm dev
 ```
 
 - Web: `http://localhost:3000`
 - API liveness: `http://localhost:4000/api/v1/health/live`
+- API readiness: `http://localhost:4000/api/v1/health/ready`
 - PostgreSQL: `localhost:5432` using the local-only credentials in `infrastructure/compose.local.yml`
 
 Copy `.env.example` to `.env` for local configuration. Never commit `.env` files.

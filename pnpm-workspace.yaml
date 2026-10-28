@@ -9,4 +9,9 @@ minimumReleaseAgeExclude:
   - "@nestjs/platform-fastify@12.3.2"
   - "@nestjs/testing@12.3.2"
 
+# Prisma's pinned CLI and engine packages require install scripts for generated artifacts.
+allowBuilds:
+  "@prisma/engines": true
+  prisma: true
+
 strictPeerDependencies: true

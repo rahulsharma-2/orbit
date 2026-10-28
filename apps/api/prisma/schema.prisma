@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+
+  @@map("user_role")
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETION_PENDING
+
+  @@map("user_status")
+}
+
+model User {
+  id                  String     @id @default(uuid()) @db.Uuid
+  email               String     @db.VarChar(320)
+  normalizedEmail     String     @unique(map: "users_normalized_email_key") @map("normalized_email") @db.VarChar(320)
+  passwordHash        String     @map("password_hash") @db.VarChar(255)
+  role                UserRole   @default(USER)
+  status              UserStatus @default(ACTIVE)
+  emailVerifiedAt     DateTime?  @map("email_verified_at") @db.Timestamptz(6)
+  deletionRequestedAt DateTime?  @map("deletion_requested_at") @db.Timestamptz(6)
+  createdAt           DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt           DateTime   @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  sessions            Session[]
+
+  @@index([status], map: "users_status_idx")
+  @@map("users")
+}
+
+model Session {
+  id                String    @id @default(uuid()) @db.Uuid
+  userId            String    @map("user_id") @db.Uuid
+  tokenDigest       String    @unique(map: "sessions_token_digest_key") @map("token_digest") @db.Char(64)
+  idleExpiresAt     DateTime  @map("idle_expires_at") @db.Timestamptz(6)
+  absoluteExpiresAt DateTime  @map("absolute_expires_at") @db.Timestamptz(6)
+  lastSeenAt        DateTime  @default(now()) @map("last_seen_at") @db.Timestamptz(6)
+  revokedAt         DateTime? @map("revoked_at") @db.Timestamptz(6)
+  revokedReason     String?   @map("revoked_reason") @db.VarChar(255)
+  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([absoluteExpiresAt], map: "sessions_absolute_expires_at_idx")
+  @@index([idleExpiresAt], map: "sessions_idle_expires_at_idx")
+  @@index([userId, revokedAt], map: "sessions_user_id_revoked_at_idx")
+  @@map("sessions")
+}

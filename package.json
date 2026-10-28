@@ -10,7 +10,11 @@
   "scripts": {
     "build": "pnpm --recursive --workspace-concurrency=1 --if-present build",
     "db:down": "docker compose -f infrastructure/compose.local.yml down",
+    "db:generate": "pnpm --filter @orbit/api db:generate",
     "db:logs": "docker compose -f infrastructure/compose.local.yml logs -f postgres",
+    "db:migrate:deploy": "pnpm --filter @orbit/api db:migrate:deploy",
+    "db:migrate:dev": "pnpm --filter @orbit/api db:migrate:dev",
+    "db:migrate:status": "pnpm --filter @orbit/api db:migrate:status",
     "db:up": "docker compose -f infrastructure/compose.local.yml up -d --wait",
     "dev": "pnpm --parallel --filter @orbit/web --filter @orbit/api dev",
     "format": "prettier --write .",

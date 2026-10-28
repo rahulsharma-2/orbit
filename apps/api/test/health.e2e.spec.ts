@@ -6,6 +6,9 @@ import {
 
 import { AppModule } from "../src/app.module.js";
 import { configureApp } from "../src/configure-app.js";
+import { configureLocalTestDatabase } from "./test-database.js";
+
+configureLocalTestDatabase();
 
 describe("health endpoint", () => {
   let app: NestFastifyApplication;
@@ -37,6 +40,19 @@ describe("health endpoint", () => {
     expect(response.json()).toEqual({
       service: "orbit-api",
       status: "ok",
+    });
+  });
+
+  it("reports ready when PostgreSQL accepts a query", async () => {
+    const response = await app.inject({
+      method: "GET",
+      url: "/api/v1/health/ready",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual({
+      dependencies: { database: "up" },
+      status: "ready",
     });
   });
 });
