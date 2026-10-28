@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+  - packages/*
+
+# These exact NestJS releases were reviewed despite pnpm's release-age safeguard.
+minimumReleaseAgeExclude:
+  - "@nestjs/common@12.3.2"
+  - "@nestjs/core@12.3.2"
+  - "@nestjs/platform-fastify@12.3.2"
+  - "@nestjs/testing@12.3.2"
+
+strictPeerDependencies: true

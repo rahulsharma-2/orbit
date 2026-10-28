@@ -19,7 +19,21 @@
 - Modular monolith, with web and API independently deployable.
 - Public job discovery and private application tracking are distinct domains.
 - Responsive, accessible, themeable UI; import/export; moderation; tests and production readiness.
-- No application implementation during this phase.
+- The initial planning phase prohibited implementation; incremental implementation was authorized on 2026-10-28.
+
+## Decisions approved on 2026-10-28
+
+- Begin incremental implementation with a foundation-only checkpoint before product features.
+- Launch India-first while keeping the data model globally usable.
+- Use email/password authentication; require verified email before public job publication.
+- Keep both CSV and XLSX in MVP scope.
+- Allow verified users to publish immediately, subject to duplicate detection, rate limits, reporting, and moderation.
+- Delete private career data on account deletion; anonymize retained public contributions.
+- Treat ₹5,000/month as an infrastructure target excluding domain registration and taxes.
+- Limit initial imports to 5 MB or 5,000 rows.
+- Finalize production domains before staging rather than blocking local foundation work.
+
+Implementation choices remain provisional while their ADR status is `Proposed`; using them in the foundation is not evidence that they are optimal.
 
 ## Proposed defaults requiring approval
 

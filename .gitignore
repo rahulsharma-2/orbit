@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Tooling and operating-system files
+.DS_Store
+*.log
+.pnpm-debug.log*
+
+# Test artifacts
+playwright-report/
+test-results/

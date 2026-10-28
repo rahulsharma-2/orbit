@@ -1,0 +1,26 @@
+{
+  "name": "orbit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Community-powered job discovery and private career tracking",
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "build": "pnpm --recursive --workspace-concurrency=1 --if-present build",
+    "db:down": "docker compose -f infrastructure/compose.local.yml down",
+    "db:logs": "docker compose -f infrastructure/compose.local.yml logs -f postgres",
+    "db:up": "docker compose -f infrastructure/compose.local.yml up -d --wait",
+    "dev": "pnpm --parallel --filter @orbit/web --filter @orbit/api dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "oxlint .",
+    "test": "pnpm --recursive --if-present test",
+    "typecheck": "pnpm --recursive --if-present typecheck"
+  },
+  "devDependencies": {
+    "oxlint": "1.90.0",
+    "prettier": "3.9.10"
+  }
+}

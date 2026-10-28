@@ -1,8 +1,8 @@
 # Orbit
 
-Orbit is a planned community-powered job discovery and private career-tracking product.
+Orbit is a community-powered job discovery and private career-tracking product.
 
-This repository currently contains **planning documentation only**. No application has been implemented, initialized, tested, or deployed.
+The initial engineering foundation is under active development. Product behavior remains governed by the planning documents and proposed ADRs below.
 
 All future implementation work must follow the repository-wide [engineering standards](AGENTS.md).
 
@@ -17,3 +17,29 @@ All future implementation work must follow the repository-wide [engineering stan
 7. [Open questions](docs/99-open-questions.md)
 
 Draft Architecture Decision Records live in [`docs/adr`](docs/adr). They are proposals, not accepted decisions.
+
+## Local foundation
+
+Use Node.js 24.22.1 and pnpm 12.15.0.
+
+```bash
+pnpm install
+pnpm db:up
+pnpm dev
+```
+
+- Web: `http://localhost:3000`
+- API liveness: `http://localhost:4000/api/v1/health/live`
+- PostgreSQL: `localhost:5432` using the local-only credentials in `infrastructure/compose.local.yml`
+
+Copy `.env.example` to `.env` for local configuration. Never commit `.env` files.
+
+Run the complete local quality gate with:
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+```

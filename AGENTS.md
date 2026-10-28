@@ -4,10 +4,10 @@
 
 These instructions apply to every task in this repository and to all implementation agents.
 
-- Orbit is currently in the planning/review phase. Do not initialize frameworks, install packages, generate application code, create infrastructure, or begin implementation until the user explicitly authorizes it.
+- Orbit entered incremental implementation on 2026-10-28 after explicit user authorization. Continue only through small, verified checkpoints aligned with the approved MVP scope.
 - Architecture Decision Records in `docs/adr/` are `Proposed`, not accepted. Do not describe them as final or proven.
-- Before implementation begins, review `docs/00-planning-status.md`, the relevant ADRs, and the P0 decisions in `docs/99-open-questions.md`.
-- Once implementation is authorized, follow the standards below for every change.
+- Before each implementation checkpoint, review `docs/00-planning-status.md`, the relevant ADRs, and unresolved decisions in `docs/99-open-questions.md`. Do not implement behavior that depends on an unresolved product or policy decision.
+- The standards below apply to every implementation change.
 
 ## 1. TypeScript
 

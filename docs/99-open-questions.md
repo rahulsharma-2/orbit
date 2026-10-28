@@ -2,14 +2,14 @@
 
 ## P0 — answer before implementation
 
-1. **Audience and legal:** Is launch India-only? What minimum age, privacy policy, terms, grievance/contact process, and deletion promise apply?
-2. **MVP priority:** If one month becomes tight, may XLSX be deferred while CSV ships, or is XLSX a hard launch gate?
-3. **Accounts:** Is email/password sufficient? Is email verification required before saving privately, or only before public contribution?
-4. **Listing policy:** Who may publish, is publication immediate, which sources/domains are prohibited, and what is the default expiry window?
-5. **Data retention:** On account deletion, should public contributions be anonymized or removed? How long may moderation audit/import diagnostics/backups retain identifiers?
-6. **Brand/domain:** What production domains will web and API use? This affects cookie, CORS, CSP, email deliverability, and deployment configuration.
-7. **Import compatibility:** Which existing spreadsheet templates/columns/date formats must work? Representative sanitized files are required for acceptance fixtures.
-8. **Budget posture:** Is ₹5,000 a hard all-in cap including tax/domain/email, or an infrastructure target with limited launch overage?
+1. **Partly resolved — audience and legal:** India-first with a globally usable model is approved. Minimum age, privacy policy, terms, grievance/contact process, and exact deletion timing remain open before public launch.
+2. **Resolved — MVP priority:** CSV and XLSX are both MVP requirements.
+3. **Resolved — accounts:** Email/password is approved; verification is required before public contribution, not before private tracking.
+4. **Partly resolved — listing policy:** Verified users may publish immediately with safeguards. Prohibited sources/domains and default expiry remain open before listing implementation.
+5. **Partly resolved — data retention:** Delete private career data and anonymize retained public contributions. Exact retention for audit, import diagnostics, and backups remains open.
+6. **Deferred — brand/domain:** Finalize production web/API domains before staging; local foundation work may proceed.
+7. **Open — import compatibility:** Representative sanitized spreadsheets, expected columns, and date formats are required before import implementation.
+8. **Resolved — budget posture:** ₹5,000/month is an infrastructure target excluding domain registration and taxes.
 
 ## P1 — decide during implementation
 
